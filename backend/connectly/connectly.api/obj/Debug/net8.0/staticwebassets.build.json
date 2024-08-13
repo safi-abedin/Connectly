@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "TtgBuWKXHPp64NnkGpRyGYKBudtoveeviKyhNGXZ1m0=",
+  "Source": "connectly.api",
+  "BasePath": "_content/connectly.api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

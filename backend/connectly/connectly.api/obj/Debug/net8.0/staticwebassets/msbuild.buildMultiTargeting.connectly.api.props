@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\connectly.api.props" />
+</Project>

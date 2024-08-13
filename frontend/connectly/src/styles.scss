@@ -1,0 +1,27 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Importing Bootstrap SCSS file. */
+@import 'bootstrap/scss/bootstrap';
+@import "ngx-toastr/toastr";
+
+.chat-area {
+    height: 400px;
+    overflow-y: scroll;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .card-footer {
+    background-color: #f8f9fa;
+  }
+  
+  .chat-container {
+    min-height: 400px;
+    max-height: 400px; /* Adjust the height as needed */
+    overflow-y: auto; /* Enables vertical scrolling */
+    overflow-x: hidden; /* Prevents horizontal scrolling if not needed */
+    padding: 10px; /* Adds padding inside the chat area */
+    background-color: #f8f9fa; /* Optional: Set a background color */
+    border-radius: 5px; /* Optional: Rounded corners */
+    border: 1px solid #ddd; /* Optional: Add a border */
+  }
+  

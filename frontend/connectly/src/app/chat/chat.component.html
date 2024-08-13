@@ -1,0 +1,79 @@
+<div class="container-fluid">
+  <!-- Header -->
+  <div class="row bg-primary text-white p-3">
+    <div class="col text-center">
+      <h3>Group Chat</h3>
+    </div>
+  </div>
+
+  <!-- Main content -->
+  <div class="row mt-3">
+    <!-- Connected Users -->
+    <div class="col-md-3">
+      <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white p-3 d-flex justify-content-between align-items-center">
+          <h5 class="mb-0">Connected Users</h5>
+          <span class="badge bg-light text-primary">{{ connectedUsers.length }}</span>
+        </div>
+        <ul class="list-group list-group-flush" style="max-height: 400px; overflow-y: auto;">
+          <li 
+            class="list-group-item d-flex align-items-center" 
+            *ngFor="let user of connectedUsers"
+          >
+            <span class="me-2 bg-primary text-white rounded-circle d-flex justify-content-center align-items-center" style="width: 30px; height: 30px;">
+              <i class="bi bi-person-fill"></i>
+            </span>
+            <span>{{ user }}</span>
+          </li>
+        </ul>
+      </div>             
+    </div>
+
+    <!-- Chat Area -->
+    <div class="col-md-9">
+      <div class="card">
+        <div class="card-header bg-primary text-white p-3 d-flex justify-content-between">
+          <div>
+            <h5>{{groupName}}</h5>
+          </div>
+          <div>
+            <button class="btn btn-danger" (click)="leaveChat()">Leave Chat</button>
+          </div>
+        </div>
+        <div class="card-body chat-area p-3" #chatContainer class="chat-container">
+          <div *ngFor="let message of messages" class="mb-3 d-flex">
+            <div *ngIf="message.user === 'Bot'" class="d-flex justify-content-center  mb-3">
+              <div class="bg-warning text-dark p-3 rounded-pill">
+                {{ message.message }}
+              </div>
+            </div>
+            <div 
+              [ngClass]="{
+                'bg-primary text-white p-3 rounded-pill': message.user === loggedInUser,
+                'bg-light text-dark p-3 rounded-pill': message.user !== loggedInUser
+              }"
+              class="message-bubble"
+              [style.marginLeft]="message.user === loggedInUser ? 'auto' : '0'"
+              [style.marginRight]="message.user !== loggedInUser ? 'auto' : '0'"
+            >
+            @if (message.user!="Bot") {
+              @if(message.user!=loggedInUser){
+                <strong>{{ message.user }}:</strong> 
+              }
+              {{ message.message }}
+              }
+            </div>
+          </div>
+        </div>                              
+        <div class="card-footer">
+          <form [formGroup]="chatForm" (ngSubmit)="sendMessage()">
+            <div class="input-group">
+              <input type="text" formControlName="message" class="form-control" placeholder="Type a message...">
+              <button class="btn btn-primary" [disabled]="chatForm.invalid" type="submit">Send</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
